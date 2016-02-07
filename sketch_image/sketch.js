@@ -8,7 +8,7 @@ function setup() {
 
 		line[i] = {};
 		line[i].x = random(width);
-		line[i].y = random(height);
+		line[i].y = i + random(0, 500);
 		line[i].speedY = random(5, 10);
 		line[i].color = color(random(255), random(255), random(255));
 		line[i].width = 1;
@@ -17,14 +17,14 @@ function setup() {
 
 function draw() {
 	for (var i = 0; i < line.length; i++) {
-		moveBall(line[i]);
-		drawBall(line[i]);
+		moveTree(line[i]);
+		drawTree(line[i]);
 	}
 
 
 }
 
-function drawBall(line) {
+function drawTree(line) {
 	push();
 
 	noStroke();
@@ -34,6 +34,7 @@ function drawBall(line) {
 	pop();
 }
 
-function moveBall(line) {
+function moveTree(line) {
 	line.y += line.speedY;
+	line.width += abs(random(5, 10));
 }
