@@ -1,15 +1,15 @@
-var balls;
+var shapes;
 
 function setup() {
 	createCanvas(800, 500);
 
-	balls = [];
+	shapes = [];
 	for (var i = 0; i < 100; i++) {
-		balls[i] = {};
-		balls[i].x = random(width);
-		balls[i].y = -10;
-		balls[i].speedY = random(5, 10);
-		balls[i].color = color(random(255), random(255), random(255), 50);
+		shapes[i] = {};
+		shapes[i].x = random(width);
+		shapes[i].y = -10;
+		shapes[i].speedY = random(5, 10);
+		shapes[i].color = color(random(255), random(255), random(255), 50);
 
 	}
 }
@@ -17,25 +17,25 @@ function setup() {
 function draw() {
 
 
-	for (var i = 0; i < balls.length; i++) {
-		moveBall(balls[i]);
-		drawBall(balls[i]);
+	for (var i = 0; i < shapes.length; i++) {
+		moveBall(shapes[i]);
+		drawBall(shapes[i]);
 	}
 }
 
 
-function drawBall(ball) {
+function drawBall(shapes) {
 	push();
 	strokeWeight(random(0, 50));
-	stroke(ball.color);
-	ellipse(ball.x, ball.y, random(10, 80), random(10, 80));
+	stroke(shapes.color);
+	ellipse(shapes.x, shapes.y, random(10, 80), random(10, 80));
 	pop();
 }
 
-function moveBall(ball) {
-	ball.y += ball.speedY;
+function moveBall(shapes) {
+	shapes.y += shapes.speedY;
 
-	// if (ball.y > 500) {
-	// 	ball.y = -100;
+	// if (shapes.y > 500) {
+	// 	shapes.y = -100;
 	// }
 }
