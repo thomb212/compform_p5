@@ -4,12 +4,12 @@ function setup() {
 	createCanvas(800, 500);
 
 	line = [];
-	for (var i = 0; i < 1000; i++) {
+	for (var i = 0; i < 10; i++) {
 
 		line[i] = {};
 		line[i].x = random(width);
-		line[i].y = i + random(0, 500);
-		line[i].speedY = random(5, 10);
+		line[i].y = 0;
+		line[i].speedY = random(2, 3);
 		line[i].color = color(random(255), random(255), random(255));
 		line[i].width = 1;
 	}
@@ -28,13 +28,17 @@ function drawTree(line) {
 	push();
 
 	noStroke();
-	fill(line.color);
-	ellipse(line.x, line.y, line.width, 10);
+	fill(line.color, 50);
+	ellipse(line.x, line.y, line.width, line.width / 3);
 
 	pop();
 }
 
 function moveTree(line) {
 	line.y += line.speedY;
-	line.width += abs(random(5, 10));
+	line.width += random(1, 5);
+
+	if (line.width > 10) {
+		line.width += -random(-2, 5);
+	}
 }
