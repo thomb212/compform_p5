@@ -1,26 +1,39 @@
-// assults your eyes
-
-var testImage;
-
-function preload() {
-	testImage = loadImage("assets/test.png");
-}
+var line;
 
 function setup() {
-	// create a place to draw
-	createCanvas(640, 360);
+	createCanvas(800, 500);
+
+	line = [];
+	for (var i = 0; i < 1000; i++) {
+
+		line[i] = {};
+		line[i].x = random(width);
+		line[i].y = random(height);
+		line[i].speedY = random(5, 10);
+		line[i].color = color(random(255), random(255), random(255));
+		line[i].width = 1;
+	}
 }
 
-
 function draw() {
-	// clear the background
-	background(0, 0, 0);
+	for (var i = 0; i < line.length; i++) {
+		moveBall(line[i]);
+		drawBall(line[i]);
+	}
 
-	// set drawing styles
-	stroke(255, 0, 0);
-	fill(255, 255, 255);
-	strokeWeight(10);
-	imageMode(CENTER);
 
-	image(testImage, random(width), random(height));
+}
+
+function drawBall(line) {
+	push();
+
+	noStroke();
+	fill(line.color);
+	ellipse(line.x, line.y, line.width, 10);
+
+	pop();
+}
+
+function moveBall(line) {
+	line.y += line.speedY;
 }
