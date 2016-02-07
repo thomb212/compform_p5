@@ -4,13 +4,13 @@ function setup() {
 	createCanvas(800, 500);
 
 	balls = [];
-	for (var i = 0; i < 10; i++) {
+	for (var i = 0; i < 100; i++) {
 		balls[i] = {};
 		balls[i].x = random(width);
-		balls[i].y = random(height);
-		balls[i].speedY = random(0, 3);
-		balls[i].color = color(random(255), random(255), random(255), random(255));
-		balls[i].stroke = random(10, 50);
+		balls[i].y = -10;
+		balls[i].speedY = random(5, 10);
+		balls[i].color = color(random(255), random(255), random(255), 50);
+
 	}
 }
 
@@ -26,9 +26,9 @@ function draw() {
 
 function drawBall(ball) {
 	push();
-	strokeWeight(random(0, 5));
+	strokeWeight(random(0, 50));
 	stroke(ball.color);
-	line(0, ball.y, ball.x, ball.y);
+	ellipse(ball.x, ball.y, random(10, 80), random(10, 80));
 	pop();
 }
 
