@@ -23,7 +23,6 @@ function draw() {
 	}
 }
 
-
 function drawBall(shapes) {
 	push();
 	strokeWeight(random(0, 50));
