@@ -1,36 +1,71 @@
-var squareX = 150;
-var squareY = 150;
-var squareSize = 300;
-var squareS = 800;
-var squareH = 100;
+var tunnel;
 
 function setup() {
-	createCanvas(800, 800);
-	noLoop();
+	createCanvas(800, 500);
 	noStroke();
-	squareH = random(0, 300);
-	squareX =
 
+	tunnel = {
+		startX: random(300, 600),
+		startY: 100,
+		size: random(1000, 1500),
+		hue: random(0, 300),
+		angle1: random(20, 80),
+		angle2: random(20, 80),
+		angle3: random(20, 80),
+		angle4: random(20, 80)
+	};
 }
 
 
 function draw() {
 	background(255);
-
-	tunnel();
-
+	drawTunnels();
 }
 
 
-function tunnel() {
+function drawTunnels() {
 
 	for (var i = 0; i < 100; i++) {
 		rectMode(CENTER);
 		colorMode(HSB);
+		fill(tunnel.hue, 10 * i, 255 / i);
 
-		fill(squareH, 10 * i, 255 / i);
-		//ellipse(squareX * 1, 190, squareSize / i, squareSize / i);
-		rect(squareX * 1, squareY / 1, squareSize / i, squareSize / i);
+		// SQUARE TUNNELS
+
+		// rect(tunnel.startX + tunnel.angle4 * i, tunnel.startY * 2, tunnel.size / i,
+		// 	tunnel.size /
+		// 	i);
+		//
+		// rect(tunnel.startX - tunnel.angle1 * i, tunnel.startY, tunnel.size / i,
+		// 	tunnel
+		// 	.size /
+		// 	i);
+		//
+		// rect(tunnel.startX * 2, tunnel.startY + tunnel.angle2 * i, tunnel.size / i,
+		// 	tunnel.size /
+		// 	i);
+		//
+		// rect(tunnel.startX * 2, tunnel.startY - tunnel.angle3 * i, tunnel.size / i,
+		// 	tunnel.size /
+		// 	i);
+
+		//ELLIPSE OPTION
+		ellipse(tunnel.startX + tunnel.angle4 * i, tunnel.startY * 2, tunnel.size / i,
+			tunnel.size /
+			i);
+
+		ellipse(tunnel.startX - tunnel.angle1 * i, tunnel.startY, tunnel.size / i,
+			tunnel
+			.size /
+			i);
+
+		ellipse(tunnel.startX * 2, tunnel.startY + tunnel.angle2 * i, tunnel.size / i,
+			tunnel.size /
+			i);
+
+		ellipse(tunnel.startX * 2, tunnel.startY - tunnel.angle3 * i, tunnel.size / i,
+			tunnel.size /
+			i);
 
 	}
 }
