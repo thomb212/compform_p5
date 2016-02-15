@@ -1,8 +1,5 @@
-// makes an image pixel by pixel
-
 var testImage;
-var red;
-var direction;
+
 
 function preload() {
 	testImage = loadImage("img/portrait2.jpg");
@@ -12,8 +9,7 @@ function preload() {
 function setup() {
 	// create a place to draw
 	createCanvas(500, 500);
-	direction = floor(random(-1, 5));
-	// load up the pixel[] array so we can read colors out of it later
+
 }
 
 function draw() {
@@ -33,9 +29,7 @@ function draw() {
 
 			var redOut, blueOut, greenOut;
 
-			// // choose random position for the sample
-			// var x2 = x + 1;
-			// var y2 = y + 1;
+
 
 			// choose random position for the sample
 			var x2 = x + 2;
