@@ -2,7 +2,7 @@ var testImage;
 
 
 function preload() {
-	testImage = loadImage("img/portrait2.jpg");
+	testImage = loadImage("img/water2.jpg");
 	// noLoop();
 }
 
