@@ -1,6 +1,6 @@
-## Random: Day 1
+## Random: Day 2
 
-![Output](img/day2_02.png)
-![Output](img/day2_05.png)
-![Output](img/day2_03.png)
-![Output](img/day2_04.png)
+![Output](img/day2-02.png)
+![Output](img/day2-05.png)
+![Output](img/day2-03.png)
+![Output](img/day2-04.png)
