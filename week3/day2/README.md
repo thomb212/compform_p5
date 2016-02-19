@@ -1,4 +1,4 @@
-## Random: Day 2
+## Pixels: Day 2
 
 ![Output](img/day2-01.png)
 ![Output](img/day2-05.png)
