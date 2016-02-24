@@ -1,8 +1,8 @@
 ## Turtles: Day 1
 
-![Output](img/day2-02.png)
-![Output](img/day2-01.png)
-![Output](img/day2-03.png)
-![Output](img/day2-04.png)
-![Output](img/day2-06.png)
-![Output](img/day2-05.png)
+![Output](img/day3-02.png)
+![Output](img/day3-01.png)
+![Output](img/day3-03.png)
+![Output](img/day3-04.png)
+![Output](img/day3-06.png)
+![Output](img/day3-05.png)
