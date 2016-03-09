@@ -1,40 +1,59 @@
-var shapes;
+var oval = {
+	width: 50,
+	xSpeed: -1,
+	xPosition: 0,
+	wave: 50,
+	color: 100,
+	stroke: 0.5
+};
+
 
 function setup() {
 	createCanvas(800, 500);
+	noFill();
+	oval.color = random(0, 255);
 
-	shapes = [];
-	for (var i = 0; i < 100; i++) {
-		shapes[i] = {};
-		shapes[i].x = random(width);
-		shapes[i].y = -10;
-		shapes[i].speedY = random(5, 10);
-		shapes[i].color = color(random(255), random(255), random(255), 50);
-
-	}
 }
 
 function draw() {
+	background(0);
 
+	wave(oval);
 
-	for (var i = 0; i < shapes.length; i++) {
-		moveBall(shapes[i]);
-		drawBall(shapes[i]);
+	if (frameCount < 150) {
+		saveFrame("bounce", frameCount);
+	} else {
+		noLoop();
 	}
 }
 
-function drawBall(shapes) {
-	push();
-	strokeWeight(random(0, 50));
-	stroke(shapes.color);
-	ellipse(shapes.x, shapes.y, random(10, 80), random(10, 80));
-	pop();
+function wave(shape) {
+	var amplitude = 300;
+	var period = 130;
+	var phase = PI;
+	shape.wave = sin((frameCount / period * 2 * PI) + phase) * amplitude;
+
+	strokeWeight(shape.stroke);
+	shape.xPosition = shape.xPosition + shape.xSpeed;
+	for (var f = 0; f < 50; f++) {
+		var y = sin((f * 10 / period * 2 * PI) + phase) * amplitude;
+		for (var j = 0; j < 50; j++) {
+			push();
+			noStroke();
+			colorMode(HSB);
+			stroke(255, 0, j * 2);
+			ellipse(shape.xPosition + (f * shape.width), 500 / 2, shape.width, (shape.wave +
+				y) + (1000 + j * -20));
+			pop();
+		}
+	}
 }
 
-function moveBall(shapes) {
-	shapes.y += shapes.speedY;
+function saveFrame(name, frameNumber) {
+	// remove the decimal part (just in case)
+	frameNumber = floor(frameNumber);
+	// zero-pad the number (e.g. 13 -> 0013);
+	var paddedNumber = ("0000" + frameNumber).substr(-4, 4);
 
-	// if (shapes.y > 500) {
-	// 	shapes.y = -100;
-	// }
+	save(name + "_" + paddedNumber);
 }
