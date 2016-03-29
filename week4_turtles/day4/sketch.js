@@ -18,7 +18,7 @@ function setup() {
 	noFill();
 	stroke(255);
 	background(0);
-	noLoop();
+	// noLoop();
 
 
 	myTurtle = new Turtle();

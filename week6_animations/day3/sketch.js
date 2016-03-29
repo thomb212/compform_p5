@@ -1,40 +1,90 @@
-var shapes;
+// Week 4: Turtle Graphics
+// basic template sketch showing how to use the Turtle class
+var myTurtle;
+var color;
+var branchlength1;
+var branchlength2;
+var variant;
 
 function setup() {
-	createCanvas(800, 500);
+	createCanvas(640, 640);
+	noFill();
+	stroke(255);
+	background(250);
+	// noLoop();
 
-	shapes = [];
-	for (var i = 0; i < 100; i++) {
-		shapes[i] = {};
-		shapes[i].x = random(width);
-		shapes[i].y = -10;
-		shapes[i].speedY = random(5, 10);
-		shapes[i].color = color(random(255), random(255), random(255), 50);
 
-	}
+	myTurtle = new Turtle();
+	color = random(0, 360);
+	branchlength1 = random(20, 50);
+	branchlength2 = random(20, 50);
+
 }
+
+
 
 function draw() {
+	// move to starting position (without drawing)
+	drawBranchPattern(20);
+	drawBranchPattern(50);
+	drawBranchPattern(0);
+}
+
+function drawBranchPattern(variant) {
+	myTurtle.penUp();
+	myTurtle.moveTo(320, 320);
+	myTurtle.turnTo(0);
+	myTurtle.penDown();
+
+	drawBranch(branchlength1 + variant);
+
+	myTurtle.penUp();
+	myTurtle.moveTo(320, 320);
+	myTurtle.turnTo(180);
+	myTurtle.penDown();
+
+	drawBranch(branchlength1 + variant);
+
+	myTurtle.penUp();
+	myTurtle.moveTo(320, 320);
+	myTurtle.turnTo(90);
+	myTurtle.penDown();
+
+	drawBranch(branchlength2 + variant);
+
+	myTurtle.penUp();
+	myTurtle.moveTo(320, 320);
+	myTurtle.turnTo(-90);
+	myTurtle.penDown();
+
+	drawBranch(branchlength2 + variant);
+
+}
 
 
-	for (var i = 0; i < shapes.length; i++) {
-		moveBall(shapes[i]);
-		drawBall(shapes[i]);
+function drawBranch(length) {
+
+	if (length < 30) {
+		return;
 	}
-}
 
-function drawBall(shapes) {
-	push();
-	strokeWeight(random(0, 50));
-	stroke(shapes.color);
-	ellipse(shapes.x, shapes.y, random(10, 80), random(10, 80));
-	pop();
-}
+	colorMode(HSB);
+	stroke(color, 360, length * 0.85);
+	strokeWeight(length / 5);
+	// draw this branch
+	myTurtle.moveForward(length);
 
-function moveBall(shapes) {
-	shapes.y += shapes.speedY;
+	// left child
+	myTurtle.pushState();
 
-	// if (shapes.y > 500) {
-	// 	shapes.y = -100;
-	// }
+	myTurtle.turnLeft(100);
+
+	drawBranch(length * 0.85);
+	myTurtle.popState();
+
+	// right child
+	myTurtle.pushState();
+	myTurtle.turnRight(100);
+	drawBranch(length * 0.85);
+	myTurtle.popState();
 }

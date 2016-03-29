@@ -20,11 +20,11 @@ function draw() {
 
 	wave(oval);
 
-	if (frameCount < 150) {
-		saveFrame("bounce", frameCount);
-	} else {
-		noLoop();
-	}
+	// if (frameCount < 150) {
+	// 	saveFrame("bounce", frameCount);
+	// } else {
+	// 	noLoop();
+	// }
 }
 
 function wave(shape) {
@@ -49,11 +49,11 @@ function wave(shape) {
 	}
 }
 
-function saveFrame(name, frameNumber) {
-	// remove the decimal part (just in case)
-	frameNumber = floor(frameNumber);
-	// zero-pad the number (e.g. 13 -> 0013);
-	var paddedNumber = ("0000" + frameNumber).substr(-4, 4);
-
-	save(name + "_" + paddedNumber);
-}
+// function saveFrame(name, frameNumber) {
+// 	// remove the decimal part (just in case)
+// 	frameNumber = floor(frameNumber);
+// 	// zero-pad the number (e.g. 13 -> 0013);
+// 	var paddedNumber = ("0000" + frameNumber).substr(-4, 4);
+//
+// 	save(name + "_" + paddedNumber);
+// }
